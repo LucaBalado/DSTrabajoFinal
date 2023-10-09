@@ -28,4 +28,8 @@ def create_app(test_config=None):
     @app.route('/Hola')
     def Hola():
         return 'Hola, Soy homelo, pelo Homelo chino!'
-    return app
+    
+    from . import db
+    db.init_app(app)
+
+    return app 
