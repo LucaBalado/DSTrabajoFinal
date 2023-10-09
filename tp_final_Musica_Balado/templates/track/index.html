@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/>
 {% block header %}
   <h1>{% block title %}baladotify{% endblock %}</h1>
@@ -12,6 +13,7 @@
           <div>Artista: {{Cancion['Artista']}}</div>
           <div>Disco: {{Cancion['Disco']}}</div>
           <div>Genero: {{Cancion['Genero']}}</div>
+          <div>canciones: {{Cancion['canciones']}}</div>
         </div>
   {% endfor %}
 {% endblock %}

@@ -2,8 +2,9 @@
 <title>{% block title %}{% endblock %} baladotify </title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
-  <h1></h1>
+  <h1>baladotify</h1>
   <ul>
+    <li><a href="{{url_for('track.index')}}">canciones</a></li>
   </ul>
 </nav>
 <section class="content">

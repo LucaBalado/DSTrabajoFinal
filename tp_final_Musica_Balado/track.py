@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 
 from tp_final_Musica_Balado.db import get_db
 
-bp = Blueprint('blog', __name__)
+bp = Blueprint('track', __name__)
 
 @bp.route('/')
 def index():
@@ -17,4 +17,4 @@ def index():
         JOIN genres g ON g.GenreId = t.GenreId
         ORDER BY t.name DESC"""
     ).fetchall()
-    return render_template('blog/index.html', canciones=canciones)
+    return render_template('track/index.html', canciones=canciones)
