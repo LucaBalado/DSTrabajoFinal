@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"/>
+{% block header %}
+  <h1>{% block title %}baladotify{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for Cancion in canciones %}
+    <article class="canciones">
+      <header>
+        <div class="about">
+          <h1>{{ Cancion['Cancion'] }}</h1>
+          <div>Artista: {{Cancion['Artista']}}</div>
+          <div>Disco: {{Cancion['Disco']}}</div>
+          <div>Genero: {{Cancion['Genero']}}</div>
+        </div>
+  {% endfor %}
+{% endblock %}
