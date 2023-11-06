@@ -38,6 +38,9 @@ def create_app(test_config=None):
     from . import album
     app.register_blueprint(album.bp)
 
+    from . import artist
+    app.register_blueprint(artist.bp)
+
     app.add_url_rule('/', endpoint='track.index')
 
     return app
