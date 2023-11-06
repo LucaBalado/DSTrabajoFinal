@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}" />
+{% block header %}
+<h1>{% block title %}Detalle de canción{% endblock %}</h1>
+{% endblock %} {% block content %}
+<div class="about">
+  <div>Canción: {{tema['Cancion']}}</div>
+  <div>Duración: {{tema['Duración']}}</div>
+  <div>Disco: {{tema['Disco']}}</div>
+  <div>Genero: {{tema['Genero']}}</div>
+</div>
+{% endblock %}

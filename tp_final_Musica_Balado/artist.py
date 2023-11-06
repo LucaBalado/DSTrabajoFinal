@@ -18,3 +18,27 @@ def index():
         ORDER BY t.name DESC"""
     ).fetchall()
     return render_template('artist/index.html', canciones=canciones)
+
+
+@bp.route('/<int:id>')
+def detalle(id):
+    db = get_db()
+    artista = db.execute(
+        """SELECT Name AS Nombre
+         FROM artists
+         WHERE Artistid = ?""",
+        (id,)
+    ).fetchone()
+
+    album = db.execute(
+        """SELECT a.Title AS Disco, sum(t.milliseconds) AS Duracion, count(t.AlbumId) AS Canciones, g.genres AS Genero
+         FROM album a JOIN artist ar On ar.ArtistId = a.ArtistID
+         JOIN genres g ON t.GenresID = g.GenresId
+         WHERE ar.ArtistId = ?
+         GROUP BY album
+         ORDER BY album""",
+        (id,)
+    ).fetchone()
+
+    return render_template('artist/index.html', artista=artista, album=album)
+
