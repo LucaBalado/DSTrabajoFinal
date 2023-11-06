@@ -1,15 +1,15 @@
-<!doctype html>
-<title>{% block title %}{% endblock %} baladotify </title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %}Baladotify</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 <nav>
-  <h1>baladotify</h1>
+  <h1>Baladotify</h1>
   <ul>
-    <li><a href="{{url_for('track.index')}}">canciones</a></li>
+    <li><a href="{{url_for('track.index')}}">Canciones</a></li>
+    <li><a href="{{url_for('album.index')}}">Discos</a></li>
+    <li><a href="{{url_for('artist.index')}}">Artistas</a></li>
   </ul>
 </nav>
 <section class="content">
-  <header>
-    {% block header %}{% endblock %}
-  </header>
+  <header>{% block header %}{% endblock %}</header>
   {% block content %}{% endblock %}
 </section>

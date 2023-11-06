@@ -1,39 +1,68 @@
+nav {
+  background: #111;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+nav h1 {
+  flex: auto;
+  margin: 0;
+  text-align: left;
+}
+nav h1 a {
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li a,
+nav ul li span,
+header .action {
+  display: block;
+  padding: 0.5rem;
+}
+
 h1 {
-    font-family: Arial, sans-serif;
-    color: #08db60;
-    text-align: center;
-  }
-  
+  font-family: Arial, sans-serif;
+  color: #08db60;
+  text-align: center;
+}
+h2 {
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 0%;
+}
 
-  .article.canciones {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-  }
+.article.canciones {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
 
-  .about {
-    font-style: italic;
-    color: #ffffff;
-    margin: 1%;
-  }
-  
+.about {
+  font-style: italic;
+  color: #ffffff;
+  margin: 1%;
+}
 
-  .article.canciones header .about {
-    margin-top: 5px;
-    font-size: 14px;
-  }
-  
+.article.canciones header .about {
+  margin-top: 5px;
+  font-size: 14px;
+}
 
-  #content {
-    width: 80%;
-    margin: 0%;
-  }
-  
+#content {
+  width: 80%;
+  margin: 0%;
+}
 
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #111;
-    margin: 0;
-    padding: 0;
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  margin: 0;
+  padding: 0;
+}
