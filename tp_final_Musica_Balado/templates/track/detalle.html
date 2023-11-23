@@ -3,10 +3,10 @@
 {% block header %}
 <h1>{% block title %}Detalle de canción{% endblock %}</h1>
 {% endblock %} {% block content %}
-<div class="about">
-  <div>Canción: {{tema['Cancion']}}</div>
-  <div>Duración: {{tema['Duración']}}</div>
+<div class="about_detalles">
+  <h2>Canción: {{tema['Cancion']}}</h2>
+  <div>Duración: {{tema['Duración']}} milisegundos</div>
   <div>Disco: {{tema['Disco']}}</div>
   <div>Genero: {{tema['Genero']}}</div>
-</div>
+</div>  
 {% endblock %}

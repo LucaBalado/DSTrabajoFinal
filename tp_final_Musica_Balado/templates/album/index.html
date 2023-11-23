@@ -6,9 +6,11 @@
 <article class="canciones">
   <header>
     <div class="about">
-      <h2>Disco: {{Cancion['Disco']}}</h2>
-      <div>Cancion: {{Cancion['Canciones'] }}</div>
+      <h2>Disco:
+        <a href=""> {{Cancion['Disco']}}</a>
+      </h2>
       <div>Artista: {{Cancion['Artista']}}</div>
+      <div>Duracion: {{Cancion['Duracion'] }}</div>
     </div>
     {% endfor %}{% endblock %}
   </header>

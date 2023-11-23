@@ -11,11 +11,12 @@ bp = Blueprint('artist', __name__, url_prefix="/artist")
 def index():
     db = get_db()
     canciones = db.execute(
-        """SELECT t.name AS Canciones, title AS Disco, ar.name AS Artista, g.name AS Genero
+        """SELECT DISTINCT(ar.name) AS Artista, t.name AS Canciones, count(title) AS Disco, 
+        g.name AS Genero, ar.ArtistId
         FROM tracks t JOIN albums a ON t.AlbumId = a.AlbumId
         JOIN artists ar ON ar.ArtistId = a.ArtistId
         JOIN genres g ON g.GenreId = t.GenreId
-        ORDER BY t.name DESC"""
+        GROUP BY ar.name"""
     ).fetchall()
     return render_template('artist/index.html', canciones=canciones)
 
@@ -24,21 +25,22 @@ def index():
 def detalle(id):
     db = get_db()
     artista = db.execute(
-        """SELECT Name AS Nombre
+        """SELECT Name AS Nombre, artistId
          FROM artists
          WHERE Artistid = ?""",
         (id,)
     ).fetchone()
 
     album = db.execute(
-        """SELECT a.Title AS Disco, sum(t.milliseconds) AS Duracion, count(t.AlbumId) AS Canciones, g.genres AS Genero
-         FROM album a JOIN artist ar On ar.ArtistId = a.ArtistID
-         JOIN genres g ON t.GenresID = g.GenresId
-         WHERE ar.ArtistId = ?
-         GROUP BY album
-         ORDER BY album""",
+        """SELECT a.Title AS Disco, sum(t.milliseconds) AS Duracion, count(t.AlbumId) AS Canciones, g.name AS Genero
+         FROM albums a JOIN artists ar On ar.ArtistId = a.ArtistID
+		 JOIN tracks t ON a.AlbumId=t.AlbumId
+         JOIN genres g ON t.genreID = g.GenreId
+         WHERE ar.ArtistId= ?
+         GROUP BY disco
+""",
         (id,)
-    ).fetchone()
+    ).fetchall()
 
-    return render_template('artist/index.html', artista=artista, album=album)
+    return render_template('artist/detalle.html', artista=artista, album=album)
 

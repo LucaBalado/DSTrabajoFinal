@@ -6,9 +6,11 @@
 <article class="canciones">
   <header>
     <div class="about">
-      <h2>Artista: {{Cancion['Artista']}}</h2>
-      <div>Disco: {{Cancion['Disco']}}</div>
-      <div>Cancion: {{Cancion['Canciones'] }}</div>
+      <h2>Artista: 
+        <a href="{{url_for('artist.detalle', id=Cancion['artistId'])}}">{{Cancion['Artista']}}</a>
+      </h2>
+      <div>Discos: {{Cancion['Disco']}}</div>
+      <div></div>
     </div>
     {% endfor %}{% endblock %}
   </header>

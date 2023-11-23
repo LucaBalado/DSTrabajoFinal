@@ -24,11 +24,11 @@ def index():
 def detalle(id):
     db = get_db()
     tema= db.execute(
-        """SELECT t.Name AS Cancion, a.Title AS Disco, t.Milliseconds AS Duración, g.name AS genero
-        t.TrackId
+        """SELECT t.Name AS Cancion, a.Title AS Disco, t.Milliseconds AS Duración, 
+        g.name AS genero, t.TrackId
          FROM albums a JOIN tracks t ON a.AlbumId = t.AlbumId
          JOIN genres g ON t.GenreId = g.GenreId
-		 WHERE t.TrackId = ?""",
+		 WHERE TrackId = ?""",
         (id,)
     ).fetchone()
     return  render_template('track/detalle.html', tema=tema)

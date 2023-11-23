@@ -11,19 +11,20 @@ bp = Blueprint('album', __name__, url_prefix="/album")
 def index():
     db = get_db()
     canciones = db.execute(
-        """SELECT t.name AS Canciones, title AS Disco, ar.name AS Artista, g.name AS Genero
+        """SELECT t.name AS Canciones, title AS Disco, sum(t.milliseconds) AS Duracion, ar.name AS Artista, g.name AS Genero
         FROM tracks t JOIN albums a ON t.AlbumId = a.AlbumId
         JOIN artists ar ON ar.ArtistId = a.ArtistId
         JOIN genres g ON g.GenreId = t.GenreId
-        ORDER BY t.name DESC"""
+        GROUP BY t.name"""
     ).fetchall()
     return render_template('album/index.html', canciones=canciones)
 
-def get_post(id, check_author=True):
-    post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' WHERE p.id = ?',
+def detalle(id):
+    albums = get_db().execute(
+        """SELECT
+
+
+        """,
         (id,)
     ).fetchone()
-    return post
+    return render_template('album/detalle.html', albums=albums)
